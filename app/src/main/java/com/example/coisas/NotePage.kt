@@ -98,7 +98,7 @@ fun NoteItem(note: Notes, viewModel: NoteViewModel) {
             .padding(vertical = 4.dp)
     ) {
         // Display nota e o seu titulo
-        Column(modifier = Modifier.weight(1f).background(GoldL).border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(10.dp))) {
+        Column(modifier = Modifier.weight(1f).background(color = GoldL, shape = RoundedCornerShape(10.dp)).border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(10.dp))) {
             Text(text = note.title, fontSize = 25.sp, color = BlackL, fontFamily = testeroboto)
             Text(text = note.content, fontSize = 18.sp, color = Color.DarkGray, fontFamily = testeroboto)
         }
