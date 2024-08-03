@@ -1,4 +1,5 @@
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicTextField
@@ -21,8 +22,10 @@ import com.example.coisas.ui.theme.GoldL
 import com.example.coisas.ui.theme.testeroboto
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 
 
@@ -44,7 +47,7 @@ fun NotePage(viewModel: NoteViewModel = viewModel()) {
                 .padding(bottom = 8.dp),
             decorationBox = { innerTextField ->
                 if (viewModel.currentTitle.value.isEmpty()) {
-                    Text("Enter title...", color = Color.Gray)
+                    Text("Enter title...", color = BlackL, fontFamily = testeroboto)
                 }
                 innerTextField()
             }
@@ -59,7 +62,7 @@ fun NotePage(viewModel: NoteViewModel = viewModel()) {
                 .padding(bottom = 8.dp),
             decorationBox = { innerTextField ->
                 if (viewModel.currentContent.value.isEmpty()) {
-                    Text("Enter content...", color = Color.Gray)
+                    Text("Enter content...", color = BlackL, fontFamily = testeroboto)
                 }
                 innerTextField()
             }
@@ -67,12 +70,14 @@ fun NotePage(viewModel: NoteViewModel = viewModel()) {
 
         // Button para adicionar/mudar nota
         Button(
+            colors = ButtonDefaults.buttonColors(containerColor = GoldL),
             onClick = { viewModel.addOrUpdateNote() },
             modifier = Modifier
                 .padding(bottom = 16.dp)
                 .align(Alignment.End)
+
         ) {
-            Text("Save Note")
+            Text("Create Note", color = BlackL, fontFamily = testeroboto)
         }
 
         // List of existing notes with scrolling support
@@ -93,14 +98,13 @@ fun NoteItem(note: Notes, viewModel: NoteViewModel) {
             .padding(vertical = 4.dp)
     ) {
         // Display nota e o seu titulo
-        Column(modifier = Modifier.weight(1f).background(GoldL)) {
+        Column(modifier = Modifier.weight(1f).background(GoldL).border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(10.dp))) {
             Text(text = note.title, fontSize = 25.sp, color = BlackL, fontFamily = testeroboto)
             Text(text = note.content, fontSize = 18.sp, color = Color.DarkGray, fontFamily = testeroboto)
         }
 
         // butao para editar a nota
         IconButton(
-
             onClick = { viewModel.editNote(note) }) {
             Text("Edit")
         }
