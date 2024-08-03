@@ -71,5 +71,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.8")
     implementation ("androidx.compose.ui:ui:1.4.0")
     implementation ("androidx.compose.foundation:foundation:1.4.0")
+    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.5.21")
 
 }
